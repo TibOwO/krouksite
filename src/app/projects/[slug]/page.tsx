@@ -1,13 +1,24 @@
 "use client";
+
 import { projects } from "../data";
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 
+// Typage d'un projet
+interface Project {
+  slug: string;
+  title: string;
+  description: string;
+  videos: string[];
+  instagram?: string;
+}
+
+// Props avec params comme Promise
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-// Définir un type pour window.instgrm
+// Typage de window.instgrm
 interface InstagramWindow extends Window {
   instgrm?: {
     Embeds: {
@@ -17,11 +28,12 @@ interface InstagramWindow extends Window {
 }
 
 export default function ProjectPage({ params }: Props) {
-  // Déballer params avec React.use()
+  // Déballage du Promise avec React.use()
   const { slug } = React.use(params);
 
-  const project = projects.find((p) => p.slug === slug);
+  const project = projects.find((p) => p.slug === slug) as Project | undefined;
 
+  // Gestion de l'intégration Instagram
   useEffect(() => {
     if (!project?.instagram) return;
 
