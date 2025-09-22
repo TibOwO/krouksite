@@ -28,12 +28,13 @@ interface InstagramWindow extends Window {
 }
 
 export default function ProjectPage({ params }: Props) {
-  // Déballage du Promise avec React.use()
+  // ✅ Unwrap the params promise using React.use()
   const { slug } = React.use(params);
 
+  // Find the project by slug
   const project = projects.find((p) => p.slug === slug) as Project | undefined;
 
-  // Gestion de l'intégration Instagram
+  // Instagram embed handling
   useEffect(() => {
     if (!project?.instagram) return;
 
