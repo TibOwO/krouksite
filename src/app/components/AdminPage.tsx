@@ -6,6 +6,7 @@ import { projects as initialProjects, Project } from "../../app/projects/data";
 export default function AdminPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [selected, setSelected] = useState<Project | null>(null);
+  const [showModal, setShowModal] = useState(true); // ✅ modal affichée au départ
 
   // Fonction pour ajouter un projet vide
   const handleAddProject = () => {
@@ -15,7 +16,7 @@ export default function AdminPage() {
       description: "",
       date: new Date().toISOString().split("T")[0],
       videos: [],
-      instagram: "",
+      instagrams: [],
     };
     setProjects([newProject, ...projects]);
     setSelected(newProject);
@@ -33,16 +34,6 @@ export default function AdminPage() {
     a.click();
     URL.revokeObjectURL(url);
   };
-
-  // Charger depuis localStorage ou fallback aux données initiales
-  useEffect(() => {
-    const saved = localStorage.getItem("projects");
-    if (saved) {
-      setProjects(JSON.parse(saved));
-    } else {
-      setProjects(initialProjects);
-    }
-  }, []);
 
   // Sauvegarde automatique
   useEffect(() => {
@@ -83,9 +74,57 @@ export default function AdminPage() {
     setSelected({ ...selected, videos: newVideos });
   };
 
+  // ✅ Charger soit depuis localStorage soit depuis initialProjects
+  const loadFromCache = () => {
+    const saved = localStorage.getItem("projects");
+    if (saved) {
+      setProjects(JSON.parse(saved));
+    } else {
+      alert("⚠️ Aucun cache trouvé, chargement depuis la base réelle.");
+      setProjects(initialProjects);
+    }
+    setShowModal(false);
+  };
+
+  const loadFromDatabase = () => {
+    setProjects(initialProjects);
+    setShowModal(false);
+  };
+
   return (
     <section className="relative min-h-screen w-full overflow-hidden px-6 py-16 text-white">
       <div className="absolute inset-0 bg-animated -z-10 opacity-20" />
+
+      {/* ✅ Modal de choix */}
+      {showModal && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/60">
+          <motion.div
+            className="bg-white/10 border border-white/20 rounded-2xl p-8 max-w-md text-center shadow-xl"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <h2 className="text-2xl font-bold mb-4">Charger les projets</h2>
+            <p className="mb-6 text-gray-300">
+              Voulez-vous utiliser vos données enregistrées dans le cache du navigateur
+              ou bien recharger la base de données réelle ?
+            </p>
+            <div className="flex gap-4 justify-center">
+              <button
+                onClick={loadFromCache}
+                className="px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-600"
+              >
+                Charger depuis le cache
+              </button>
+              <button
+                onClick={loadFromDatabase}
+                className="px-4 py-2 rounded-xl bg-blue-500 hover:bg-blue-600"
+              >
+                Charger la base réelle
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       <motion.h1
         className="text-5xl font-bold text-center mb-12"
@@ -95,16 +134,13 @@ export default function AdminPage() {
         Gestion des Projets
       </motion.h1>
 
-      
-
       <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
         {/* Liste des projets */}
-        
         <div>
           <h2 className="text-2xl font-semibold mb-4">Projets existants</h2>
           <button
             onClick={handleAddProject}
-            className="px-3 py-1 rounded-xl bg-green-500 hover:bg-green-600 text-white padding-2 mb-4"
+            className="px-3 py-1 rounded-xl bg-green-500 hover:bg-green-600 text-white mb-4"
           >
             + Ajouter un projet
           </button>
@@ -184,15 +220,48 @@ export default function AdminPage() {
                   + Ajouter une vidéo
                 </button>
               </div>
-                <input
-                  className="w-full p-2 rounded bg-white/10 border border-white/20"
-                  type="url"
-                  value={selected.instagram || ""}
-                  onChange={(e) =>
-                    setSelected({ ...selected, instagram: e.target.value })
+
+              {/* Champs Instagram dynamiques */}
+              <div className="space-y-2">
+                <h3 className="font-medium">Instagram</h3>
+                {selected.instagrams?.map((link, i) => (
+                  <div key={i} className="flex gap-2 items-center">
+                    <input
+                      className="flex-1 p-2 rounded bg-white/10 border border-white/20"
+                      value={link}
+                      onChange={(e) => {
+                        const newInstagrams = [...(selected.instagrams || [])];
+                        newInstagrams[i] = e.target.value;
+                        setSelected({ ...selected, instagrams: newInstagrams });
+                      }}
+                      placeholder={`Lien Instagram ${i + 1}`}
+                      type="url"
+                    />
+                    <button
+                      onClick={() => {
+                        const newInstagrams = selected.instagrams?.filter(
+                          (_, idx) => idx !== i
+                        );
+                        setSelected({ ...selected, instagrams: newInstagrams });
+                      }}
+                      className="px-3 py-1 rounded bg-red-500 hover:bg-red-600 text-sm"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+                <button
+                  onClick={() =>
+                    setSelected({
+                      ...selected,
+                      instagrams: [...(selected.instagrams || []), ""],
+                    })
                   }
-                  placeholder="Lien Instagram (optionnel)"
-                />
+                  className="px-4 py-2 rounded-xl bg-green-500 hover:bg-green-600"
+                >
+                  + Ajouter un lien Instagram
+                </button>
+              </div>
 
               <div className="flex gap-4 pt-4">
                 <button

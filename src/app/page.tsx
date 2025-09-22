@@ -81,35 +81,38 @@ export default function HomePage() {
           >
             <h2 className="text-4xl font-bold text-center mb-12 mt-10">Mes Projets</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {projects.map((project, index) => (
-                <Link key={project.slug} href={`/projects/${project.slug}`}>
-                  <motion.div
-                    className="relative group rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500 transition-all cursor-pointer"
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  >
-                    {project.videos.length > 0 && (
-                      <div className="relative w-full aspect-video">
-                        <iframe
-                          className="w-full h-full object-cover rounded-2xl"
-                          src={`https://www.youtube.com/embed/${project.videos[0]}?autoplay=0&controls=0`}
-                          title={`Preview ${project.title}`}
-                          frameBorder="0"
-                          allowFullScreen
-                        />
+              {projects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                .map((project, index) => (
+                  <Link key={project.slug} href={`/projects/${project.slug}`}>
+                    <motion.div
+                      className="relative group rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500 transition-all cursor-pointer"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                    >
+                      {project.videos.length > 0 && (
+                        <div className="relative w-full aspect-video">
+                          <iframe
+                            className="w-full h-full object-cover rounded-2xl"
+                            src={`https://www.youtube.com/embed/${project.videos[0]}?autoplay=0&controls=0`}
+                            title={`Preview ${project.title}`}
+                            frameBorder="0"
+                            allowFullScreen
+                          />
+                        </div>
+                      )}
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold">{project.title}</h3>
+                        <time className="block mt-1 text-sm text-gray-400">{project.date}</time>
+                        <p className="mt-3 text-gray-300 line-clamp-2">
+                          {project.description}
+                        </p>
                       </div>
-                    )}
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold">{project.title}</h3>
-                      <time className="block mt-1 text-sm text-gray-400">{project.date}</time>
-                      <p className="mt-3 text-gray-300">{project.description}</p>
-                    </div>
-                    <div className="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition" />
-                  </motion.div>
-                </Link>
+                      <div className="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition" />
+                    </motion.div>
+                  </Link>
               ))}
             </div>
           </motion.div>
@@ -130,7 +133,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col md:flex-row gap-4">
               <a
-                href="mailto:alexis@example.com"
+                href="mailto:alexis.amettler@gmail.com"
                 className="bg-orange-500 hover:bg-orange-600 text-black font-semibold px-6 py-3 rounded-2xl transition"
               >
                 Envoyer un e-mail

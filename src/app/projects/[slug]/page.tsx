@@ -10,7 +10,8 @@ interface Project {
   title: string;
   description: string;
   videos: string[];
-  instagram?: string;
+  instagrams?: [string]; // 🔥 tableau de strings
+  
 }
 
 // Typage des paramètres passés au composant
@@ -33,7 +34,7 @@ export default function ProjectPage({ params }: Props) {
   const project = projects.find((p) => p.slug === slug) as Project | undefined;
 
   useEffect(() => {
-    if (!project?.instagram) return;
+    if (!project?.instagrams?.length) return;
 
     const win = window as InstagramWindow;
 
@@ -54,7 +55,8 @@ export default function ProjectPage({ params }: Props) {
     return () => {
       document.body.removeChild(script);
     };
-  }, [project?.instagram]);
+  }, [project?.instagrams]);
+
 
   if (!project) {
     return (
@@ -119,25 +121,28 @@ export default function ProjectPage({ params }: Props) {
         ))}
       </motion.div>
 
-      {project.instagram && (
+      {project.instagrams && project.instagrams.length > 0 && (
         <motion.div
-          className="max-w-lg mx-auto mt-16"
+          className="max-w-lg mx-auto mt-16 flex flex-col gap-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <blockquote
-            className="instagram-media w-full"
-            data-instgrm-permalink={project.instagram}
-            data-instgrm-version="14"
-            style={{
-              background: "transparent",
-              border: "none",
-              width: "100%",
-              maxWidth: "100%",
-              margin: "0 auto",
-            }}
-          />
+          {project.instagrams.map((link, idx) => (
+            <blockquote
+              key={idx}
+              className="instagram-media w-full"
+              data-instgrm-permalink={link}
+              data-instgrm-version="14"
+              style={{
+                background: "transparent",
+                border: "none",
+                width: "100%",
+                maxWidth: "100%",
+                margin: "0 auto",
+              }}
+            />
+          ))}
         </motion.div>
       )}
     </section>
