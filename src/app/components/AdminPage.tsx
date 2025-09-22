@@ -7,6 +7,21 @@ export default function AdminPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [selected, setSelected] = useState<Project | null>(null);
 
+  // Fonction pour ajouter un projet vide
+  const handleAddProject = () => {
+    const newProject: Project = {
+      slug: `project-${Date.now()}`,
+      title: "Nouveau Projet",
+      description: "",
+      date: new Date().toISOString().split("T")[0],
+      videos: [],
+      instagram: "",
+    };
+    setProjects([newProject, ...projects]);
+    setSelected(newProject);
+  };
+
+  // Fonction pour exporter json
   const handleExport = () => {
     const blob = new Blob([JSON.stringify(projects, null, 2)], {
       type: "application/json",
@@ -80,10 +95,19 @@ export default function AdminPage() {
         Gestion des Projets
       </motion.h1>
 
+      
+
       <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
         {/* Liste des projets */}
+        
         <div>
           <h2 className="text-2xl font-semibold mb-4">Projets existants</h2>
+          <button
+            onClick={handleAddProject}
+            className="px-3 py-1 rounded-xl bg-green-500 hover:bg-green-600 text-white padding-2 mb-4"
+          >
+            + Ajouter un projet
+          </button>
           <div className="space-y-4">
             {projects.map((p) => (
               <motion.div
