@@ -7,8 +7,17 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// Définir un type pour window.instgrm
+interface InstagramWindow extends Window {
+  instgrm?: {
+    Embeds: {
+      process: () => void;
+    };
+  };
+}
+
 export default function ProjectPage({ params }: Props) {
-  // ✅ Déballer params avec React.use()
+  // Déballer params avec React.use()
   const { slug } = React.use(params);
 
   const project = projects.find((p) => p.slug === slug);
@@ -16,8 +25,10 @@ export default function ProjectPage({ params }: Props) {
   useEffect(() => {
     if (!project?.instagram) return;
 
-    if ((window as any).instgrm) {
-      (window as any).instgrm.Embeds.process();
+    const win = window as InstagramWindow;
+
+    if (win.instgrm) {
+      win.instgrm.Embeds.process();
       return;
     }
 
@@ -27,7 +38,7 @@ export default function ProjectPage({ params }: Props) {
     document.body.appendChild(script);
 
     script.onload = () => {
-      (window as any).instgrm?.Embeds.process();
+      win.instgrm?.Embeds.process();
     };
 
     return () => {
@@ -68,7 +79,9 @@ export default function ProjectPage({ params }: Props) {
       </div>
 
       <motion.div
-        className={`grid gap-10 ${project.videos.length === 1 ? "place-items-center" : "md:grid-cols-2"}`}
+        className={`grid gap-10 ${
+          project.videos.length === 1 ? "place-items-center" : "md:grid-cols-2"
+        }`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
@@ -79,7 +92,7 @@ export default function ProjectPage({ params }: Props) {
             className={`relative aspect-video rounded-2xl shadow-xl bg-white/5 backdrop-blur-sm
               ${project.videos.length === 1 ? "w-full max-w-4xl" : "w-full"}`}
             initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }} // ✅ animation immédiate
+            animate={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -93,32 +106,30 @@ export default function ProjectPage({ params }: Props) {
               allowFullScreen
             />
           </motion.div>
-
         ))}
       </motion.div>
 
       {project.instagram && (
-      <motion.div
-        className="max-w-lg mx-auto mt-16"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }} // ✅ animation immédiate
-        transition={{ duration: 0.8 }}
-      >
-        <blockquote
-          className="instagram-media w-full"
-          data-instgrm-permalink={project.instagram}
-          data-instgrm-version="14"
-          style={{
-            background: "transparent",
-            border: "none",
-            width: "100%",
-            maxWidth: "100%",
-            margin: "0 auto",
-          }}
-        />
-      </motion.div>
-    )}
-
+        <motion.div
+          className="max-w-lg mx-auto mt-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <blockquote
+            className="instagram-media w-full"
+            data-instgrm-permalink={project.instagram}
+            data-instgrm-version="14"
+            style={{
+              background: "transparent",
+              border: "none",
+              width: "100%",
+              maxWidth: "100%",
+              margin: "0 auto",
+            }}
+          />
+        </motion.div>
+      )}
     </section>
   );
 }
