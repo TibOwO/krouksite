@@ -9,12 +9,8 @@ export default function HomePage() {
 
   useEffect(() => {
     const handleScroll = (e: WheelEvent) => {
-      if (!showProjects && e.deltaY > 50) {
-        setShowProjects(true);
-      }
-      if (showProjects && e.deltaY < -50) {
-        setShowProjects(false);
-      }
+      if (!showProjects && e.deltaY > 50) setShowProjects(true);
+      if (showProjects && e.deltaY < -50) setShowProjects(false);
     };
     window.addEventListener("wheel", handleScroll, { passive: true });
     return () => window.removeEventListener("wheel", handleScroll);
@@ -22,11 +18,10 @@ export default function HomePage() {
 
   return (
     <section className="relative min-h-screen text-white main-div-color">
-      <div className="absolute inset-0 bg-animated -z-10 opacity-13" />
+      <div className="absolute inset-0 bg-animated -z-10 opacity-[0.13]"/>
 
       <AnimatePresence mode="wait">
         {!showProjects ? (
-          // === Écran Intro ===
           <motion.div
             key="intro"
             className="fixed inset-0 flex flex-col justify-center items-center text-center px-6"
@@ -59,15 +54,14 @@ export default function HomePage() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              Je conçois des vidéos créatives et immersives pour artistes, marques et
-              événements. <br /> Scrollez pour découvrir mes projets.
+              Je conçois des vidéos créatives et immersives pour artistes, marques et événements. <br />
+              Scrollez pour découvrir mes projets.
             </motion.p>
           </motion.div>
         ) : (
-          // === Écran Projets ===
           <motion.div
             key="projects"
-            className="absolute inset-0 px-6 py-16 "
+            className="absolute inset-0 px-6 py-16"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
@@ -87,11 +81,10 @@ export default function HomePage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
-                    {/* ✅ Aperçu vidéo YouTube */}
                     {project.videos.length > 0 && (
                       <div className="relative w-full aspect-video">
                         <iframe
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover rounded-2xl"
                           src={`https://www.youtube.com/embed/${project.videos[0]}?autoplay=0&controls=0`}
                           title={`Preview ${project.title}`}
                           frameBorder="0"
@@ -102,9 +95,7 @@ export default function HomePage() {
 
                     <div className="p-6">
                       <h3 className="text-xl font-semibold">{project.title}</h3>
-                      <time className="block mt-1 text-sm text-gray-400">
-                        {project.date}
-                      </time>
+                      <time className="block mt-1 text-sm text-gray-400">{project.date}</time>
                       <p className="mt-3 text-gray-300">{project.description}</p>
                     </div>
 
