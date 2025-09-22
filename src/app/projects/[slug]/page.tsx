@@ -13,9 +13,9 @@ interface Project {
   instagram?: string;
 }
 
-// Props avec params comme Promise
+// Typage des paramètres passés au composant
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
 // Typage de window.instgrm
@@ -28,13 +28,10 @@ interface InstagramWindow extends Window {
 }
 
 export default function ProjectPage({ params }: Props) {
-  // ✅ Unwrap the params promise using React.use()
-  const { slug } = React.use(params);
+  const { slug } = params; // Déballage correct des params
 
-  // Find the project by slug
   const project = projects.find((p) => p.slug === slug) as Project | undefined;
 
-  // Instagram embed handling
   useEffect(() => {
     if (!project?.instagram) return;
 
