@@ -1,8 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+    --background: #0c0c0c;
+}
+
+navbar {
+    --foreground: transparent;
+    color: black;
+  }
+
+.main-div-color {
+  overflow-y: auto; /* scroll vertical possible */
+  -ms-overflow-style: none; /* IE et Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.main-div-color::-webkit-scrollbar {
+  display: none; /* Chrome, Safari et Opera */
 }
 
 body {
@@ -10,20 +24,18 @@ body {
   color: var(--foreground);
   font-family: 'Roboto', sans-serif;
   transition: background 0.3s, color 0.3s;
-  overflow: hidden; /* 🚫 enlève la scrollbar */
-  height: 100vh;
-  width: 100vw;
+
 }
 
-/* Cacher scrollbar sur certains navigateurs */
+/* Cacher scrollbar sur certains navigateurs
 ::-webkit-scrollbar {
   display: none;
 }
 * {
-  -ms-overflow-style: none; /* IE/Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+} 
+*/
 /* Effet de dégradé animé */
 @keyframes gradient-move {
   0% { background-position: 0% 50%; }
