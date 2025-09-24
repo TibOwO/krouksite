@@ -63,8 +63,7 @@ export default function HomePage() {
             <h2 className="mt-4 text-2xl md:text-3xl font-medium text-gray-300">
               Monteur Vidéo / Événementiel
             </h2>
-            <p className="mt-6 max-w-2xl text-gray-400">
-              Passionné par l’audiovisuel depuis mon adolescence...
+            <p className="mt-6 max-w-2xl text-gray-400"> Passionné par l’audiovisuel depuis mon adolescence, j’ai développé un goût particulier pour l'audiovisuel, particulièrement le montage vidéo. Ma maîtrise avancée des logiciels est une de mes principales forces, qui me permet de travailler efficacement et rapidement tout en garantissant une qualité certaine. Mes connaissances en communication digitale me permettent d’adapter chaque projet aux attentes des publics. J’ai pu réaliser de nombreux projets variés, allant de la création de contenus digitaux à des documentaires et des projets musicaux. Un profil polyvalent à la croisée de l’audiovisuel et de la communication digitale.
             </p>
           </motion.div>
         )}
