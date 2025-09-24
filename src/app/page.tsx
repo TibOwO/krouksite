@@ -79,7 +79,7 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-bold text-center mb-12 mt-10">Mes Projets</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto pb-32">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto pb-100">
               {projects
                 .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                 .map((project, index) => (
