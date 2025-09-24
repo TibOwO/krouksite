@@ -1,32 +1,32 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { projects } from "./projects/data";
+import { useSection } from "./context/SectionContext";
 
 export default function HomePage() {
-  const sections = ["intro", "projects", "contact"];
-  const [currentSection, setCurrentSection] = useState(0);
+  const { currentSection, setCurrentSection } = useSection();
   const scrollTimeout = useRef(false);
   const projectsRef = useRef<HTMLDivElement>(null);
+  const sections = ["intro", "projects", "contact"];
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (scrollTimeout.current) return;
 
-      // Bloquer le scroll global si l'utilisateur est dans la liste de projets et peut encore scroller à l'intérieur
+      // scroll interne dans la liste de projets
       if (currentSection === 1 && projectsRef.current) {
         const el = projectsRef.current;
         const isAtTop = el.scrollTop === 0;
         const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;
 
         if ((e.deltaY < 0 && !isAtTop) || (e.deltaY > 0 && !isAtBottom)) {
-          // On laisse le scroll se faire dans la div
           return;
         }
       }
 
-      // Scroll fullpage
+      // scroll plein écran
       if (e.deltaY > 0) {
         setCurrentSection((prev) => Math.min(prev + 1, sections.length - 1));
       } else if (e.deltaY < 0) {
@@ -36,12 +36,12 @@ export default function HomePage() {
       scrollTimeout.current = true;
       setTimeout(() => {
         scrollTimeout.current = false;
-      }, 1200); // 1.2s de délai entre les scrolls
+      }, 1200);
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
     return () => window.removeEventListener("wheel", handleWheel);
-  }, [currentSection]);
+  }, [currentSection, setCurrentSection]);
 
   return (
     <section className="relative h-screen w-screen overflow-hidden text-white">
@@ -63,7 +63,7 @@ export default function HomePage() {
             <h2 className="mt-4 text-2xl md:text-3xl font-medium text-gray-300">
               Monteur Vidéo / Événementiel
             </h2>
-            <p className="mt-6 max-w-2xl text-gray-400"> Passionné par l’audiovisuel depuis mon adolescence, j’ai développé un goût particulier pour l'audiovisuel, particulièrement le montage vidéo. Ma maîtrise avancée des logiciels est une de mes principales forces, qui me permet de travailler efficacement et rapidement tout en garantissant une qualité certaine. Mes connaissances en communication digitale me permettent d’adapter chaque projet aux attentes des publics. J’ai pu réaliser de nombreux projets variés, allant de la création de contenus digitaux à des documentaires et des projets musicaux. Un profil polyvalent à la croisée de l’audiovisuel et de la communication digitale.
+            <p className="mt-8 max-w-4xl text-gray-300"> Passionné par l’audiovisuel depuis mon adolescence, j’ai développé un goût particulier pour l'audiovisuel, particulièrement le montage vidéo. Ma maîtrise avancée des logiciels est une de mes principales forces, qui me permet de travailler efficacement et rapidement tout en garantissant une qualité certaine. Mes connaissances en communication digitale me permettent d’adapter chaque projet aux attentes des publics. J’ai pu réaliser de nombreux projets variés, allant de la création de contenus digitaux à des documentaires et des projets musicaux. Un profil polyvalent à la croisée de l’audiovisuel et de la communication digitale.
             </p>
           </motion.div>
         )}
@@ -79,8 +79,9 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-bold text-center mb-12 mt-10">Mes Projets</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {projects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto pb-32">
+              {projects
+                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                 .map((project, index) => (
                   <Link key={project.slug} href={`/projects/${project.slug}`}>
                     <motion.div
@@ -104,7 +105,9 @@ export default function HomePage() {
                       )}
                       <div className="p-6">
                         <h3 className="text-xl font-semibold">{project.title}</h3>
-                        <time className="block mt-1 text-sm text-gray-400">{project.date}</time>
+                        <time className="block mt-1 text-sm text-gray-400">
+                          {project.date}
+                        </time>
                         <p className="mt-3 text-gray-300 line-clamp-2">
                           {project.description}
                         </p>
@@ -112,7 +115,7 @@ export default function HomePage() {
                       <div className="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition" />
                     </motion.div>
                   </Link>
-              ))}
+                ))}
             </div>
           </motion.div>
         )}
@@ -128,7 +131,7 @@ export default function HomePage() {
           >
             <h2 className="text-4xl font-bold mb-6">Contactez-moi</h2>
             <p className="text-gray-300 max-w-xl text-center mb-8">
-              Vous avez un projet ou une idée ? Discutons-en !
+              Vous avez un projet ou une idée ? Discutons-en !
             </p>
             <div className="flex flex-col md:flex-row gap-4">
               <a
