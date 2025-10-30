@@ -1,17 +1,32 @@
 [
   {
+    "slug": "project-1761832385680",
+    "title": "La déculottée",
+    "description": "",
+    "date": "2025-10-30",
+    "videos": [],
+    "instagrams": [
+      "https://www.instagram.com/ladeculottee13?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+    ]
+  },
+  {
     "slug": "project-1758549249285",
     "title": "Warrior fight night",
     "description": "",
     "date": "2023-01-22",
-    "videos": ["K3D8ca4cUVc", "6zQcQdfNirw", "P0tY-sOTyoI", "xb9NyQlDlmY"],
+    "videos": [
+      "K3D8ca4cUVc",
+      "6zQcQdfNirw",
+      "P0tY-sOTyoI",
+      "xb9NyQlDlmY"
+    ],
     "instagrams": []
   },
   {
     "slug": "project-1758549014559",
     "title": "DIVERS",
     "description": "",
-    "date": "2025-09-22",
+    "date": "2024-01-22",
     "videos": [
       "pomQQwl377c",
       "A9EwGm2ajbw",
@@ -26,24 +41,34 @@
     "slug": "project-1758548515130",
     "title": "Faron Studio",
     "description": "dans le cadre de mes études de communication j'ai pu réaliser des courts métrages humoristiques diffusés en amphithéâtre lors de notre événement étudiant. Une grande quantité de tournages ainsi que de longues heures de montage ont dû être consacrées à ce projet dans lequel j'ai pu réaliser de A à Z l’entièreté des productions audiovisuelles. J'ai d'ailleurs pu travailler dans une salle fond vert professionnelle.",
-    "date": "2025-09-22",
-    "videos": ["dEHwAxf99_U", "R8eaZaZlV2c", "lqh-Q4i0MNY", "tGCL0SXQ4uU", "DBrv5cVrLrY", "fvyjU9DDzrE"],
+    "date": "2023-06-22",
+    "videos": [
+      "R8eaZaZlV2c",
+      "DBrv5cVrLrY"
+    ],
     "instagrams": []
   },
   {
     "slug": "project-1758547974595",
     "title": "TRIP OUT",
     "description": "J'ai pu réaliser 3 vidéos d'un projet étudiant visant à la promotion d'une application fictive pour la prévention des produits stupéfiants. J'ai eu l'occasion d'apprendre les bases du logiciel Blender.",
-    "date": "2025-09-22",
-    "videos": ["KsbnNYLXlgo", "rtPjLRwjs30", "e4eCy7GFI_0"],
+    "date": "2024-03-22",
+    "videos": [
+      "KsbnNYLXlgo",
+      "rtPjLRwjs30",
+      "e4eCy7GFI_0"
+    ],
     "instagrams": []
   },
   {
     "slug": "project-1758547020790",
     "title": "Manon Leroy x Giorgio Armani",
     "description": "J'ai pu réaliser dans le cadre d'un projet de collaboration promotionnel entre Manon Leroy et Giorgio Armani une vidéo promotionnelle dans un cadre magnifique, un de mes projets les plus réussis encore à ce jour.",
-    "date": "2025-09-22",
-    "videos": ["H66vXyuoJV0", "-nwOYCO0dsw"],
+    "date": "2024-09-22",
+    "videos": [
+      "H66vXyuoJV0",
+      "-nwOYCO0dsw"
+    ],
     "instagrams": []
   },
   {
@@ -51,15 +76,36 @@
     "title": "KrouK's Rap",
     "description": "Projet de média rap français, j'ai pu expérimenter l'alimentation régulière d'un média sur le rap, en créant du contenu de manière continue. J'ai pu être republié par des artistes de renommée nationale, explorer la création de podcasts et de contenu dynamique sur les réseaux.",
     "date": "2024-06-01",
-    "videos": ["pCDEQ9hxMsg", "35WOSl1mAGA", "QGSgEGSdhpg", "zxqTwzY0Tyw"],
-    "instagrams": ["https://www.instagram.com/krouks_rap/"]
+    "videos": [
+      "pCDEQ9hxMsg",
+      "35WOSl1mAGA",
+      "QGSgEGSdhpg"
+    ],
+    "instagrams": [
+      "https://www.instagram.com/krouks_rap/"
+    ]
   },
   {
     "slug": "project-1758544086955",
     "title": "Projects Musicaux",
     "description": "Projet Touch Designer : des samples de vidéos, projet J9UEVE. Des vidéos avec un sens qui laisse de la place à la musique tout en ayant un intérêt, vraiment à la manière d'un sample dans une musique : donner une seconde vie à une vidéo dans un contexte totalement différent. Ce sont des visualizers recherchés et non des clips. J'explore également la création musicale en groupe via FL Studio.\n\nOn peut souligner le projet ZOUZOU, une série de vidéos réalisées à travers des images d'archives avec une direction artistique particulière, pour explorer un peu plus en détail l'univers de notre groupe.\n\nJe n'ai pas regroupé l'entiereté de mes créations, elles sont disponibles sur leurs chaînes respectives.",
     "date": "2025-09-22",
-    "videos": ["osr3WYsCq64", "swCAQSLD8jE", "qcLtzoiCjr8", "zs4z8Om7h3I", "VNN5Et-MmHw", "35MwvZA4iog", "V9hT5mOBiBs", "bjzgW3J2Olo", "ZzXkXRivVAk", "wR87ZffL7nU", "oxY-rFcxnR0", "iuw5M2vLvqM", "Z_QlkkOz8IE", "ZJXoGurFT7Q"],
+    "videos": [
+      "osr3WYsCq64",
+      "swCAQSLD8jE",
+      "qcLtzoiCjr8",
+      "zs4z8Om7h3I",
+      "VNN5Et-MmHw",
+      "35MwvZA4iog",
+      "V9hT5mOBiBs",
+      "bjzgW3J2Olo",
+      "ZzXkXRivVAk",
+      "wR87ZffL7nU",
+      "oxY-rFcxnR0",
+      "iuw5M2vLvqM",
+      "Z_QlkkOz8IE",
+      "ZJXoGurFT7Q"
+    ],
     "instagrams": []
   },
   {
@@ -67,7 +113,9 @@
     "title": "Court Metrage",
     "description": "J'ai pu réaliser dans le cadre de ma licence audiovisuel un court métrage. J'ai notamment réalisé le montage mais également pu faire assistant caméra et lumière lors du tournage.",
     "date": "2025-01-30",
-    "videos": ["lWXOJibz8DA"],
+    "videos": [
+      "lWXOJibz8DA"
+    ],
     "instagrams": []
   },
   {
@@ -75,7 +123,9 @@
     "title": "Concept Pub Yours",
     "description": "Dans le cadre de ma licence audiovisuel, j'ai eu l'occasion de réaliser une vidéo publicitaire fictive sur les bières sans alcool Yours, un des projets les plus ambitieux qu'il m'ait été donné de faire. Notamment lors du tournage avec des étapes cruciales à ne pas manquer, j'ai pu réaliser le montage de ce projet et participer à l'écriture et son élaboration.",
     "date": "2025-03-06",
-    "videos": ["lWXOJibz8DA"],
+    "videos": [
+      "lWXOJibz8DA"
+    ],
     "instagrams": []
   },
   {
@@ -83,7 +133,9 @@
     "title": "Le Documentaire",
     "description": "Pour mon projet de fin d’année de licence CVCA, j’ai eu l’occasion de réaliser mon propre documentaire, de l’écriture à la réalisation en passant par le montage. C'est le projet le plus personnel et le plus abouti qu'il m'ait été donné de faire.",
     "date": "2025-06-15",
-    "videos": ["K4PKURPETl4"],
+    "videos": [
+      "K4PKURPETl4"
+    ],
     "instagrams": []
   }
 ]
