@@ -1,5 +1,70 @@
 [
   {
+    "slug": "project-1786974817355",
+    "title": "Nouveau Projet",
+    "description": "",
+    "date": "2026-08-17",
+    "videos": [],
+    "instagrams": []
+  },
+  {
+    "slug": "project-1786974689621",
+    "title": "guirec",
+    "description": "",
+    "date": "2026-08-17",
+    "videos": [
+      "https://youtube.com/shorts/tBL8CBAPZLY?feature=share",
+      "https://youtube.com/shorts/wDAGmeRqstQ?feature=share",
+      "https://youtube.com/shorts/FqfHQFA6Hig?feature=share",
+      "https://youtube.com/shorts/9arCJUnQyoI"
+    ],
+    "instagrams": []
+  },
+  {
+    "slug": "project-1786972606708",
+    "title": "miraj",
+    "description": "",
+    "date": "2026-06-16",
+    "videos": [
+      "https://youtube.com/shorts/TcKhNwXU-SE?feature=share",
+      "https://youtube.com/shorts/g_j0mEpitOY?feature=share",
+      "https://youtube.com/shorts/2NDrhS2Izhs?feature=share",
+      "https://youtube.com/shorts/TEwWhFfkR8E?feature=share",
+      "https://youtube.com/shorts/MyBSkh-n30Y?feature=share",
+      "https://youtube.com/shorts/HXKVvTi6d28?feature=share",
+      "https://youtube.com/shorts/W9zqTrj5mBo?feature=share",
+      "https://youtube.com/shorts/-2XE1jlQq9M?feature=share",
+      "https://youtube.com/shorts/yirDZFpEVko?feature=share",
+      "https://youtube.com/shorts/B9qXJgdATq0?feature=share",
+      "https://youtube.com/shorts/9ndcuqq36RY?feature=share",
+      "https://youtube.com/shorts/qpJ1I8dU20M?feature=share"
+    ],
+    "instagrams": []
+  },
+  {
+    "slug": "project-1786968209018",
+    "title": "Clips",
+    "description": "",
+    "date": "2026-08-17",
+    "videos": [
+      "https://youtu.be/1iFnoSGHfCw",
+      "https://youtu.be/VM9pyDRu0n0",
+      "https://youtu.be/rZBFIlkGAkA",
+      "https://youtu.be/M9_7gMXkYQs?si=hF5UnVN7NRRGw3FG"
+    ],
+    "instagrams": []
+  },
+  {
+    "slug": "project-1786967984686",
+    "title": "Documentaire session studio",
+    "description": "",
+    "date": "2026-11-21",
+    "videos": [
+      "https://youtu.be/zOrQyeQrc1A?si=nLHgNCi2LwkC_7sO"
+    ],
+    "instagrams": []
+  },
+  {
     "slug": "project-1773414317205",
     "title": "FRONTRAW",
     "description": "",
